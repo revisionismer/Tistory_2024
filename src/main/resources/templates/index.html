@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body class="drawer drawer--left">
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+		<div id="main">
+			<div id="my_main_list" class="my_main_list">
+			
+			</div>
+			<div id="pagination"></div>
+		</div>
+	</div>
+	
+	<!-- container // -->
+	
+	<div th:replace="fragments/footer :: footer"></div>
+</html>

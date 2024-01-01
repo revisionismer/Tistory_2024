@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+	<title>Tistory by thymeleaf</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+
+		<div class="my_auth_box">
+        	<div class="my_auth_form_box">
+            	<div class="my_auth_form_box_title">Tistory</div>
+            	<div class="my_error_box my_hidden"></div>
+            	<form id="joinForm" method="post">
+                	<input type="text" class="my_auth_form_box_input" id="username" name="username" placeholder="유저네임" maxlength="20" required />
+                	<input type="password" class="my_auth_form_box_input" id="password" name="password"  placeholder="비밀번호" maxlength="20" required />
+                	<input type="password" class="my_auth_form_box_input" id="same-password" name="same-password" placeholder="비밀번호 확인" maxlength="20" required />
+                	<input type="email" class="my_auth_form_box_input" id="email" name="email" placeholder="이메일" maxlength="60" required />
+            	</form>
+            	
+            	<button id="joinBtn" class="my_secondary_btn">회원가입</button>
+            	
+        	</div>
+    	</div>
+    	<br />
+	</div>
+	<!-- container // -->
+	
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

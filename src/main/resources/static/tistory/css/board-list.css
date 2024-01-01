@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+#not_board_data_area {
+	display: flex;
+	justify-content: center;
+}

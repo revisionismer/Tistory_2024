@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+	<title>Tistory by thymeleaf</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+
+		<div class="my_auth_box">
+        	<div class="my_auth_form_box">
+            	<div class="my_auth_form_box_title">Tistory</div>
+            	<form id="loginForm">
+                	<input type="text" class="my_auth_form_box_input" id="username" name="username" placeholder="아이디" />
+                	<input type="password" class="my_auth_form_box_input" id="password"  name="password" placeholder="비밀번호" />
+            	</form>
+            	
+            	<button id="loginBtn" class="my_secondary_btn">로그인</button>
+            	<div class="my_auth_form_box_link">
+                	<div><a href="/join">회원가입</a></div>
+                	<div><a href="/password-reset-form">비밀번호 찾기</a></div>
+            	</div>
+        	</div>
+    	</div>
+    	<br />
+	</div>
+	<!-- container // -->
+	
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+<script type="text/javascript">
+	// 2023-09-18 : 사용자가 직접 url을 입력해서 login페이지로 접속할 경우 만약 쿠키가 존재하면 강제 /logout 호출(재로그인)
+	//            : (참고로 로그인에 성공해서 access_token값을 쿠키로 가지고 있다면 login페이지로 가는 버튼이 안보인다.)
+	$(document).ready(function(){
+		
+		var ACCESS_TOKEN = getCookie('access_token');
+
+		function getCookie(key) {
+			let result = null;
+			let cookie = document.cookie.split(';');
+			cookie.some(function(item) {
+				item = item.replace(' ', '');
+			
+				let dic = item.split('=');
+				if(key === dic[0]) {
+					result = dic[1];
+					return true;
+				}
+			});
+			return result;
+		}
+	
+ 		if(ACCESS_TOKEN != null) {
+ 			location.href = "/logout";	
+ 		}
+	});;
+</script>
+</html>

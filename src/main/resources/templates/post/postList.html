@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body class="drawer drawer--left">
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+
+		<input type="hidden" id="userId" name="userId" value="">
+		<input type="hidden" id="c_pageNum" value="">
+		<input type="hidden" id="principalId" value=""/>
+    	<input type="hidden" id="postId" value=""/>
+		<input type="hidden" id="categoryId" value="">
+
+    	<div class="d-flex justify-content-end my_mb_sm_1">
+			<div class="my_icon_rounded_btn d-flex justify-content-center align-items-center">
+        		<a href="/post/write" class="my_atag_none">
+            		<i class="fa-solid fa-pencil"></i>
+        		</a>
+     		</div>
+    	</div>
+
+    	<div id="postList" class="my_post_list">
+		
+    	</div>
+	</div>
+	<!-- container // -->
+	
+	<div th:replace="fragments/footer :: footer"></div>
+</html>

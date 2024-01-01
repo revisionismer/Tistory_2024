@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body class="drawer drawer--left">
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+		<div class="my_auth_box">
+        	<div class="my_auth_form_box">
+            	<div class="my_auth_form_box_title" onclick="test()">Tistory</div>
+            	<form id="categoryForm">
+                	<input class="my_auth_form_box_input" type="text" id="title" name="title" placeholder="카테고리명" />
+                	<button id="createCategoryBtn" class="my_secondary_btn">등록</button>
+            	</form>
+        	</div>
+    	</div>
+    	<br />
+	</div>
+	
+	<!-- container // -->
+	
+	<div th:replace="fragments/footer :: footer"></div>
+</html>
