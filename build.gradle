@@ -1,0 +1,92 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.1.7'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.tistory'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/* 1. web */
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	/* 2. 배포시 내장톰캣을 사용하지 않을거라는 dependency */
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+	/* 3. lombok */
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	/* 4. devtools */
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	/* 5. mybatis */
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
+	
+	/* 6. MariaDB */
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client' 
+	
+	/* 7. JDBC */
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
+	/* 8. security */
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	
+	/* 9. AOP */
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	
+	/* 10. validation(Bean Validation) */
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	
+	/* 11. mail */
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	
+	/* 12. JPA */ 
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
+	/* 13. thymeleaf */
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	/* 14. QLRM */
+	implementation group: 'org.qlrm', name: 'qlrm', version: '3.0.4'
+	
+	/* 15. 파일업로드 - Apache Commons File Upload */
+	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+	
+	/* 16-1. jwt - api */
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	
+	/* 16-2. jwt - impl */
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	
+	/* 16-3. jwt - jackson*/
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	
+	/* 17. 프로퍼티 값 설정  관련 */
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	
+	/* 18. assertj */
+	testImplementation("org.assertj:assertj-core:3.23.1")
+	
+	/* 19. h2 database */
+	runtimeOnly 'com.h2database:h2'
+	
+	/* 20. spring security test */
+	implementation 'junit:junit:4.12'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

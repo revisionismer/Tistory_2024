@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .ql-editor {
+        min-height: 40vh;
+    }
+    #postBtn {
+    	display: flex; 
+    	justify-content: center;
+    	margin-top: 30px;
+    }
+    #writeBtn {
+    	margin-right: 10px;
+    }
+    
+    #modifyBtn {
+    	margin-right: 10px;
+    }
+   
+</style>
+<head th:replace="fragments/header :: header"></head>
+
+<body class="drawer drawer--left">
+
+	<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+	
+	<!-- // container -->
+	<div class="container">
+
+    <input id="pageOwnerId" type="hidden" th:value="${pageOwnerId}"/>
+    <input id="my-loveId" type="hidden" value=""/>
+    <input id="content" type="hidden" value=""/>
+    <input id="post" type="hidden" value=""/>
+    <input id="principalId" type="hidden" th:value="${principalId}" />
+    <input id="postId" type="hidden" th:value="${postId}"/>
+    <input id="category_id" type="hidden" value=""/>
+
+    <form id="postView" method="post" enctype="multipart/form-data" onsubmit="return getQuill()">
+
+        <div class="form-group">
+        	
+            <select class="form-control" id="categoryList" name="categoryList">    
+            
+            </select>
+           
+        </div>
+        <br/>
+       
+        <input type="text" id="title" name="title" class="form-control" placeholder="Enter Title" readonly="readonly">
+
+        <div id="toolbar-container">
+            <span class="ql-formats">
+                <select class="ql-font"></select>
+                <select class="ql-size"></select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+            </span>
+            <span class="ql-formats">
+                <select class="ql-color"></select>
+                <select class="ql-background"></select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-script" value="sub"></button>
+                <button class="ql-script" value="super"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-header" value="1"></button>
+                <button class="ql-header" value="2"></button>
+                <button class="ql-blockquote"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <button class="ql-indent" value="-1"></button>
+                <button class="ql-indent" value="+1"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-direction" value="rtl"></button>
+                <select class="ql-align"></select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-link"></button>
+                <button class="ql-image"></button>
+                <button class="ql-video"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-clean"></button>
+            </span>
+        </div>
+
+        <div id="editor-container"></div>
+   
+        <textarea name="content" id="content" class="my_hidden"></textarea>
+
+        <div class="form-control d-flex justify-content-between">
+			
+			<div id="loveArea">
+				<i class="fa-solid fa-heart my_fake_like my_mr_sm_1" id="unlove"></i>
+				<i class="far fa-heart my_fake_un_like my_mr_sm_1" id="love"></i>
+				<b id="totalLoveCnt">좋아요 갯수</b>
+           	</div> 
+			     		
+            <div id="thumnailImgArea">
+            	
+            </div>
+                               
+        </div>
+
+    </form>
+    <div id="postBtn">
+   		<button id="homeBtn" class="my_active_btn" onclick="homeBtn();">취소</button>
+   	</div>
+    <br />
+		
+</div>
+<!-- container // -->
+	
+<div th:replace="fragments/footer :: footer"></div>
+<!-- jquery.min.js -->
+<script src="/tistory/js/jquery.min.js"></script>
+<script type="text/javascript">
+	var data = $("#content").val();
+	
+	function getQuill() {
+			
+       	let quillContent = $("#editor-container .ql-editor").html();
+    	
+        $("#content").html(quillContent);
+        
+        return true;
+    }
+
+	if(data == null) {
+	
+    	var quill = new Quill('#editor-container', {
+        	modules: {
+            	formula: true,
+            	syntax: true,
+            	toolbar: '#toolbar-container'
+        	},
+        	placeholder: '게시물을 작성해주세요.',
+        	theme: 'snow'
+    	});
+    } else {
+    	
+    	var quill = new Quill('#editor-container', {
+        	modules: {
+            	formula: true,
+            	syntax: true,
+            	toolbar: '#toolbar-container'
+        	},
+        	theme: 'snow',
+        	readOnly: true
+    	});
+    	
+    	quill.setContents([
+  			{ insert: data.replace(/<[^>]*>?/g, '') }
+		]);
+    }
+		
+	function homeBtn() {
+		location.href = "/"
+	}
+		
+</script>
+</html>

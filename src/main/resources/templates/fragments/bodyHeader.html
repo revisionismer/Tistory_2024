@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="header" th:fragment="bodyHeader">
+    <nav class="navbar navbar-expand-sm my_navbar" >
+
+        <a href="/" th:if="${access_token == null}">
+            <svg class="my_sm_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.4 408.4">
+                <g>
+                    <circle class="cls-1" cx="58.18" cy="58.18" r="58.18" />
+                    <circle class="cls-1" cx="204.2" cy="58.18" r="58.18" />
+                    <circle class="cls-1" cx="204.2" cy="204.2" r="58.18" />
+                    <circle class="cls-1" cx="204.2" cy="350.22" r="58.18" />
+                    <circle class="cls-1" cx="350.22" cy="58.18" r="58.18" />
+                </g>
+            </svg>
+        </a>
+        
+        <!-- Links -->
+        <ul class="navbar-nav" th:if="${access_token != null}">
+            <li class="nav-item">
+                <div class="my_icon_btn drawer-toggle">
+                    <i class="fa-solid fa-bars fa-2x"></i>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="my_navbar_title">
+            <a href="/">티스토리</a>
+        </div>
+	
+        <div class="dropdown dropleft" th:if="${access_token != null}">
+        	
+        	<div data-toggle="dropdown">
+        
+               <img src="/tistory/images/dog.jpg" class="my_profile_rounded_img_btn_lg" id="dropdown_userImage" style="width: 50px; height: 50px;">
+      
+            </div>
+
+            <div class="dropdown-menu">
+            
+            </div>
+        </div>
+		
+        <div th:if="${access_token == null}">
+            <a class="my_main_start_btn" href="/login">시작하기</a>
+        </div>
+      
+    </nav>
+    
+    <nav class="drawer-nav my_nav_slider" role="navigation" th:if="${access_token != null}">
+    	
+        <ul class="drawer-menu">
+            <li><a class="drawer-brand" href="/">Home</a></li>
+        </ul>
+        
+        <div class="my_nav_slider_visit">
+            <div>방문자수 : 1</div>
+            <i class="fa-solid fa-camera"></i>
+        </div>
+      
+    </nav>
+    	
+    <br>
+    <br>
+</div>
+</html>

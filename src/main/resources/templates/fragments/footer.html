@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="my_footer" th:fragment="footer">
+    <div class="my_footer_left_menu">
+        <div class="my_text_menu_title">Tistory</div>
+        <div class="my_text_menu_body">티스토리는 마음을 담아 만듭니다.</div>
+    </div>
+    <div class="my_footer_right_menu">
+        <div class="my_footer_right_menu_item">
+            <div class="my_text_menu_subtitle">메뉴가 궁금할 땐</div>
+            <div class="my_text_menu_body">스킨</div>
+            <div class="my_text_menu_body">포럼</div>
+            <div class="my_text_menu_body">스토리</div>
+        </div>
+        <div class="my_footer_right_menu_item">
+            <div class="my_text_menu_subtitle">사용하다 궁금할 땐</div>
+            <div class="my_text_menu_body">오픈 API</div>
+            <div class="my_text_menu_body">스킨가이드</div>
+            <div class="my_text_menu_body">고객센터</div>
+        </div>
+        <div class="my_footer_right_menu_item">
+            <div class="my_text_menu_subtitle">정책이 궁금할 땐</div>
+            <div class="my_text_menu_body">티스토리 개인정보처리방침</div>
+            <div class="my_text_menu_body">청소년보호정책</div>
+            <div class="my_text_menu_body">오픈API 이용약관</div>
+            <div class="my_text_menu_body">Email수집 거부정책</div>
+        </div>
+        <div class="my_footer_right_menu_item">
+            <div class="my_text_menu_subtitle">도움이 필요할 땐</div>
+            <div class="my_text_menu_body">권리침해신고</div>
+            <div class="my_text_menu_body">상거래 피해 구제신청</div>
+        </div>
+    </div>
+    
+    <!-- jquery.slim.min.js -->
+	<script src="/tistory/js/jquery.slim.min.js"></script>
+    
+	<!-- popper.min.js -->
+	<script src="/tistory/js/popper.min.js"></script>
+    
+	<!-- bootstrap.bundle.min.js  -->
+	<script src="/tistory/js/bootstrap.bundle.min.js"></script>
+    
+	<!-- 6b3377d2bb.js -->
+	<!--<script src="/tistory/js/6b3377d2bb.js" crossorigin="anonymous"></script> -->
+
+	<!-- jquery & iScroll -->
+	<script src="/tistory/js/iscroll.min.js"></script>
+
+	<!-- katex.js -->
+	<script src="/tistory/js/katex.js"></script>
+    
+	<!-- highlight.min.js -->
+	<script src="/tistory/js/highlight.min.js"></script>
+    
+	<!-- quill.js -->
+	<script src="/tistory/js/quill.js"></script>
+    
+	<!-- jquery-serialize-object.js -->
+	<script src="/tistory/js/jquery-serialize-object.js"></script>
+    
+	<!-- jquery.min.js -->
+	<script src="/tistory/js/jquery.min.js"></script>
+	
+    <!-- drawer.js -->
+	<script src="/tistory/js/drawer.min.js"></script>
+	
+	<!-- base64.min.js -->
+	<script src="/tistory/js/base64.min.js"></script>	
+	
+	<!-- join.js -->
+	<script src="/tistory/js/app/join.js"></script>
+	
+	<!-- login.js -->
+	<script src="/tistory/js/app/login.js"></script>
+	
+	<!-- password_reset.js -->
+	<script src="/tistory/js/app/password_reset.js"></script>	
+	
+	<!-- member.js -->
+	<script src="/tistory/js/app/member.js"></script>
+	
+	<!-- category.js -->
+	<script src="/tistory/js/app/category.js"></script>
+	
+	<!-- index.js -->
+	<script src="/tistory/js/app/index.js"></script>
+	
+	<!-- post.js -->
+	<script src="/tistory/js/app/post.js"></script>
+	
+	<!-- board.js -->
+	<script src="/tistory/js/app/board.js"></script>
+	
+	<!-- myDrawer.js -->
+	<script th:if="${access_token != null}" src="/tistory/js/myDrawer.js" ></script>	
+		
+	
+</div>
+
+</html>
