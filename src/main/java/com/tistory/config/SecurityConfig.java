@@ -75,7 +75,8 @@ public class SecurityConfig {
 				.exceptionHandling( (exceptionHandling) -> exceptionHandling.accessDeniedHandler( (request, response, authException) -> {  // 1-18. 인가 익셉션 가로채서 custom으로 구현
 					CustomResponseUtil.unAuthorization(response, "관리자로 로그인을 해주세요.");  // 1-19. 해당 유저의 권한을 체크한다 ADMIN 권한이 아니라면 관리자로 로그인을 해달라고 응답을 해준다.
 				}))
-				.authorizeHttpRequests(   // 1-11. 인증 Request를 정의
+				.authorizeHttpRequests(   // 1-11. 인증 Request를 정의(이 설정이 들어가면 org.springframework.web.util.pattern.PatternParseException이 발생하는데 application.properties에 설정하나를 더 넣어줘야한다.(requestMatchers의 default를 antMatcher로 바꿔줘야한다. 스프링부트 3점대 버전부터 antMatcher가 default가 아니라 path_pattern_parser라서 모든 요청이 restAPI형태로만 들어와야됨)
+						  				  // 그래서 application.properties에 spring.mvc.pathmatch.matching-strategy=ant_path_matcher 추가해줘야 정상동작.
 						(authorizeReqeust) ->  authorizeReqeust.requestMatchers("/api/**/s/**").authenticated()  // 1-12. /api/** 형태로 들어오는 url은 인증이 필요하다.
 															   .requestMatchers("/api/admin/**").hasRole(""  + UserEnum.ADMIN)  // 1-13. /api/admin/**을 호출하기 위해선 설정된 Role이 필요하다.
 															   .anyRequest()  // 1-14. 1-12, 1-13가 아닌 요청은			
